@@ -25,6 +25,7 @@ public final class FlightTest extends BaseTest {
 		
 		tp.searchFlights("Kolkata","Bangalore", "October 2024", "10");
 		tp.waitForPageLoad();
+		
 		double cheapestPrice = tp.getCheapestPrice();
 		ExtentLogger.info("Cheapest flight cost: "+cheapestPrice);
 		Assertions.assertThat(cheapestPrice).isPositive();
