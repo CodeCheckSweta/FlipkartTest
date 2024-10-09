@@ -33,13 +33,16 @@ public class TravelPage extends BasePage {
 	private final By nextMonthBtn = By.xpath("//div[@class='au1mSN']//button[@class='R0r93E']");
 	private final By searchBtn = By.xpath("//span[text()='SEARCH']");
 
-	public TravelPage searchFlights(String source, String dest, String month_year, String day) {
+	public TravelPage searchFlights(String source, String dest, String month_year, String day) throws InterruptedException {
 		clearAndSendKeys(departureCity, source, WaitStrategy.VISIBLE, "Departure City");
-		selectCityFromDropdown(source);
+		By depart= By.xpath("//input[@name='0-departcity']//following::span[text()='"+source+"']");
+		click(depart, WaitStrategy.CLICKABLE, "Departure Date");
 		clearAndSendKeys(arrivalCity, dest, WaitStrategy.VISIBLE, "Arrival City");
-		selectCityFromDropdown(dest);
+		By arrival= By.xpath("//input[@name='0-arrivalcity']//following::span[text()='"+dest+"']");
+		click(arrival, WaitStrategy.CLICKABLE, "Arrival Date");
 		selectDate(month_year, day);
 		click(searchBtn, WaitStrategy.CLICKABLE, "Search Button");
+		Thread.sleep(5000);
 		return this;
 	}
 
@@ -57,7 +60,7 @@ public class TravelPage extends BasePage {
 	        click(nextMonthBtn, WaitStrategy.CLICKABLE, "Next Month Button");
 	    }
 
-	    // Select the day once the correct month is visible
+	    //Select the day once the correct month is visible
 	    selectDay(day);
 	}
 	
@@ -73,23 +76,19 @@ public class TravelPage extends BasePage {
 	}
 
 	private void selectDay(String day) {
-	    List<WebElement> days = driver.findElements(By.xpath("//button[@class='pl8ttv' and not(@disabled)]"));
-
-	    for (WebElement dayElement : days) {
-	        if (dayElement.getText().equals(day)) {
-	            dayElement.click();
-	            ExtentLogger.info(dayElement.getText()+" is clicked");
-	            return;
-	        }
-	    }
+		System.out.println("//div[text()='October 2024']//following::td[.//button[text()='"+day+"']][1]");
+		WebElement dayElement= driver.findElement(By.xpath("//div[text()='October 2024']//following::td[.//button[text()='"+day+"'] and not(@disabled)][1]"));
+		String dateValue= dayElement.getText();
+		dayElement.click();
+		ExtentLogger.info(dateValue+" is clicked");
 	}
 
 	public double getCheapestPrice() {
-		List<WebElement> priceElements = driver.findElements(By.xpath("//div[@class='O+irE2']"));
+		List<WebElement> priceElements = driver.findElements(By.xpath("//div[text()='Book']/preceding-sibling::div[1]/div[1]"));
 		
 		List<Double> prices = new ArrayList<>();
 		for(WebElement priceElement:priceElements) {
-			String priceText = priceElement.getText();
+			String priceText = priceElement.getText().replaceAll("[^\\d]", "");
 			if(!priceText.isEmpty()) {
 				prices.add(Double.parseDouble(priceText));
 			}

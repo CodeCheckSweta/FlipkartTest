@@ -1,0 +1,7 @@
+/target/
+/ExtentReports
+/test-output
+.settings
+.mvn
+.project
+.classpath

@@ -22,13 +22,13 @@ public final class HomePage extends BasePage {
 		return new GroceryPage(driver); // method chaining
 	}
 
-	public MobilePage navigateToMobilePage(String value) {
+	public MobilePage navigateToMobilePage() {
 		click(mobileLink, WaitStrategy.CLICKABLE, "Mobile Page Link");
 		return new MobilePage(driver); // method chaining
 	}
 
-	public TravelPage navigateToTravelPage(String value) {
-		click(travelLink, WaitStrategy.VISIBLE, "Travel Page Link");
+	public TravelPage navigateToTravelPage() {
+		click(travelLink, WaitStrategy.CLICKABLE, "Travel Page Link");
 		return new TravelPage(driver); // method chaining
 	}
 
