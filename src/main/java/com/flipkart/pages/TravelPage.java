@@ -1,17 +1,13 @@
 package com.flipkart.pages;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.flipkart.enums.WaitStrategy;
 import com.flipkart.reports.ExtentLogger;
@@ -44,12 +40,6 @@ public class TravelPage extends BasePage {
 		click(searchBtn, WaitStrategy.CLICKABLE, "Search Button");
 		Thread.sleep(5000);
 		return this;
-	}
-
-	public void selectCityFromDropdown(String cityName) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement cityOption =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'"+cityName+"')]")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", cityOption);
 	}
 
 	public void selectDate(String month_year, String day) {
