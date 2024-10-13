@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.flipkart.driver.Driver;
+import com.flipkart.pages.BasePage;
 import com.flipkart.reports.ExtentReport;
 
-public class BaseTest {
+public class BaseTest extends BasePage{
 	protected BaseTest() {}
 	
 	@BeforeSuite
-	public void initialize() {
+	public void initialize() throws Exception {
 		ExtentReport.initReports();
 	}
 	
@@ -26,7 +27,7 @@ public class BaseTest {
 	@BeforeMethod
 	protected void setUp(Method method) throws Exception {
 		ExtentReport.createTest(method.getName());
-		Driver.initDriver();
+		driver = Driver.initDriver();
 	}
 	
 	@AfterMethod

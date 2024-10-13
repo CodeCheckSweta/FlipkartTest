@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,8 +13,8 @@ import com.flipkart.reports.ExtentLogger;
 
 public class TravelPage extends BasePage {
 
-	public TravelPage(WebDriver driver) {
-		super(driver);
+	public TravelPage() {
+		super();
 		PageFactory.initElements(driver, this);
 	}
 

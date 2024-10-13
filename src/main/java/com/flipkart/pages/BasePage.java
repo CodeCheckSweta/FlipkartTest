@@ -15,11 +15,10 @@ import com.flipkart.reports.ExtentLogger;
 
 public class BasePage {
 	
-	protected WebDriver driver;
+	protected static WebDriver driver;
 	protected WebDriverWait wait;
 	
-	public BasePage(WebDriver driver) {
-		this.driver = driver;
+	public BasePage() {
 		wait = new WebDriverWait(driver, FrameworkConstants.getExplicitWait());
 	}
 

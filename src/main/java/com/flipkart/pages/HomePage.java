@@ -8,8 +8,8 @@ import com.flipkart.enums.WaitStrategy;
 
 public final class HomePage extends BasePage {
 	
-	public HomePage(WebDriver driver) {
-		super(driver);
+	public HomePage() {
+		super();
 		PageFactory.initElements(driver, this);
 	}
 
@@ -19,17 +19,17 @@ public final class HomePage extends BasePage {
 
 	public GroceryPage navigateToGroceryPage() {
 		click(groceryLink, WaitStrategy.CLICKABLE, "Grocery Page Link");
-		return new GroceryPage(driver); // method chaining
+		return new GroceryPage(); // method chaining
 	}
 
 	public MobilePage navigateToMobilePage() {
 		click(mobileLink, WaitStrategy.CLICKABLE, "Mobile Page Link");
-		return new MobilePage(driver); // method chaining
+		return new MobilePage(); // method chaining
 	}
 
 	public TravelPage navigateToTravelPage() {
 		click(travelLink, WaitStrategy.CLICKABLE, "Travel Page Link");
-		return new TravelPage(driver); // method chaining
+		return new TravelPage(); // method chaining
 	}
 
 }
