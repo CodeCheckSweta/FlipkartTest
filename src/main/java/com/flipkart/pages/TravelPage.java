@@ -31,10 +31,10 @@ public class TravelPage extends BasePage {
 	public TravelPage searchFlights(String source, String dest, String month_year, String day) throws InterruptedException {
 		clearAndSendKeys(departureCity, source, WaitStrategy.VISIBLE, "Departure City");
 		By depart= By.xpath("//input[@name='0-departcity']//following::span[text()='"+source+"']");
-		click(depart, WaitStrategy.CLICKABLE, "Departure Date");
+		click(depart, WaitStrategy.CLICKABLE, "Departure City");
 		clearAndSendKeys(arrivalCity, dest, WaitStrategy.VISIBLE, "Arrival City");
 		By arrival= By.xpath("//input[@name='0-arrivalcity']//following::span[text()='"+dest+"']");
-		click(arrival, WaitStrategy.CLICKABLE, "Arrival Date");
+		click(arrival, WaitStrategy.CLICKABLE, "Arrival City");
 		selectDate(month_year, day);
 		click(searchBtn, WaitStrategy.CLICKABLE, "Search Button");
 		Thread.sleep(5000);
