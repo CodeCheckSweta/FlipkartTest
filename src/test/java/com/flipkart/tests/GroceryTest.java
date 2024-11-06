@@ -18,7 +18,7 @@ public final class GroceryTest extends BaseTest{
 		Assertions.assertThat(gp.getTitle()).isEqualTo("Flipkart Grocery Store - Groceries Online & Get Rs.1 Deals at Flipkart.com");
 		
 		gp.setPinCode("122006");
-		gp.searchGrocery("1kg almond");
+		gp.searchGrocery("almond");
 		gp.waitForPageLoad();
 		
 		double cheapestPrice = gp.getCheapestAlmondPrice();

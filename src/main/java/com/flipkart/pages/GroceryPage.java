@@ -41,7 +41,8 @@ public class GroceryPage extends BasePage{
 	}
 	
 	public double getCheapestAlmondPrice() {
-		List<WebElement> priceElements = driver.findElements(By.xpath("//span[text()='Add Item']/preceding::div[contains(text(),'₹')][2]"));
+
+		List<WebElement> priceElements = driver.findElements(By.xpath("(//span[text()='Add Item']/preceding::div[contains(text(),'1 kg') or contains(text(),'2x500 g')][2])/preceding::div[contains(text(),'₹')][2]"));
 		System.out.println(priceElements);
 		List<Double> prices = new ArrayList<>();
 		for(WebElement priceElement:priceElements) {

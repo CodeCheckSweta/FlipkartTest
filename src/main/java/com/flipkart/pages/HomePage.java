@@ -14,7 +14,7 @@ public final class HomePage extends BasePage {
 
 	private final By groceryLink = By.xpath("//span[text()='Grocery']");
 	private final By mobileLink = By.xpath("//span[text()='Mobiles & Tablets']");
-	private final By travelLink = By.xpath("//span[text()='Travel']");
+	private final By travelLink = By.xpath("//span[text()='Flight Bookings']");
 
 	public GroceryPage navigateToGroceryPage() {
 		click(groceryLink, WaitStrategy.CLICKABLE, "Grocery Page Link");
